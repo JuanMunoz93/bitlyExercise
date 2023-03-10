@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,node,windows
 
+### Manual ignored files ###
+
+cucumber-messages.ndjson
+cucumber-report.html
+
 ### Node ###
 # Logs
 logs
