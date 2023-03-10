@@ -1,0 +1,19 @@
+{
+  "name": "bitlyexercise",
+  "version": "1.0.0",
+  "description": "Exercise for bitly EU",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanMunoz93/bitlyExercise.git"
+  },
+  "author": "Juan Camilo Munoz Bedoya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanMunoz93/bitlyExercise/issues"
+  },
+  "homepage": "https://github.com/JuanMunoz93/bitlyExercise#readme"
+}
