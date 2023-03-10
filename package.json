@@ -15,5 +15,19 @@
   "bugs": {
     "url": "https://github.com/JuanMunoz93/bitlyExercise/issues"
   },
-  "homepage": "https://github.com/JuanMunoz93/bitlyExercise#readme"
+  "homepage": "https://github.com/JuanMunoz93/bitlyExercise#readme",
+
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": [
+      "cypress/e2e/stepDefinitions/*.js"
+    ]
+  },
+  
+
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "15.1.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
+    "cypress": "12.7.0"
+  }
 }
