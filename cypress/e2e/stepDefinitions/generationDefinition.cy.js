@@ -12,8 +12,13 @@ When("I download the {string} QR", (qrFormat) => {
 });
 
 Then("the QR code is downloaded in the {string} format", (qrFormat) => {
- //   const downloadsFolder = Cypress.config('downloadsFolder')
- //   const downloadedFilename = path.join(downloadsFolder, `qr-code.${qrFormat}`)
-    
 
+    const expectedDownloadedFile=Cypress.config('downloadsFolder')+`\\qr-code.${qrFormat}`;
+    cy.readFile(expectedDownloadedFile, {timeout:Cypress.env('readFileTimeout')}).then((content)=>{
+
+        console.log(`downloaded QR found, path= ${expectedDownloadedFile}`);
+
+    })
+
+        
 });

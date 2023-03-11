@@ -2,7 +2,7 @@ Feature: Generate QR codes
     Background: 
     Given I am in the qrcode monkey homepage
 
-#@cleanDownloadFolder
+@cleanDownloadFolder
     Scenario Outline: Generate default qr on different formats
         When I generate the QR code 
         And I download the "<qrFormat>" QR
@@ -10,7 +10,7 @@ Feature: Generate QR codes
         Examples:
             | qrFormat |
             | png      |
-            #| SVG      |
-            #| PDF      |
-            #| EPS      |
+            | svg      |
+            | pdf      |
+            | eps      |
 

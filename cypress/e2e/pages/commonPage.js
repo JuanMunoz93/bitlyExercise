@@ -4,7 +4,7 @@ export class CommonPage{
 
     webElements = {
         generateQrBtn: () => cy.get("#button-create-qr-code"),
-        downloadQrBtn: () => cy.get("#button-download-qr-code-png"),
+        downloadQrBtn: (format) => cy.get(`button[ng-click="download('${format}')"]`),
         enterContentBtn: () => cy.xpath('//h3[@class="title" and text()="Enter Content"]'),
     }
 
@@ -12,7 +12,15 @@ export class CommonPage{
         this.webElements.generateQrBtn().click();
     }
 
-    downloadQR(){
-        this.webElements.downloadQrBtn().click();
+    downloadQR(qrFormat){
+        let downloadBtn=this.webElements.downloadQrBtn(qrFormat);
+
+        cy.window().document().then(function (doc) {
+        doc.addEventListener('click', () => {
+
+          setTimeout(function () { doc.location.reload() }, Cypress.env('refreshPageTime'))
+        })
+        downloadBtn.click()
+      })
     }
 }

@@ -1,5 +1,5 @@
 const { defineConfig } = require("cypress");
-const { rmdir } = require('fs')
+const { rmdir, readdirSync } = require('fs')
 
 module.exports = defineConfig({
   e2e: {
@@ -8,6 +8,10 @@ module.exports = defineConfig({
     baseUrl: 'https://www.qrcode-monkey.com/',
     specPattern: "**/*.feature",
 
+    env:{
+      refreshPageTime:15000,
+      readFileTimeout:20000
+    },
 
     // prefix async
     async setupNodeEvents(on, config) {
@@ -23,18 +27,19 @@ module.exports = defineConfig({
 
       on('task', {
         deleteFolder(folderName) {
-          console.log('deleting folder %s', folderName)
+          console.log('deleting folder %s', folderName);
     
           return new Promise((resolve, reject) => {
             rmdir(folderName, { maxRetries: 10, recursive: true }, (err) => {
               if (err) {
                 console.error(err)
-                return reject(err)
               }
               resolve(null)
             })
           })
         },
+
+
       })
       // return any mods to Cypress
       return config
