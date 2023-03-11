@@ -1,14 +1,14 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor"
-import {CommonPage} from "../pages/commonPage"
+import {ContentPage} from "../pages/contentPage"
 
-const commonPage = new CommonPage();
+const contentPage = new ContentPage();
 
 Given("I generate the QR code", () => {
-    commonPage.generateQR();
+    contentPage.generateQR();
 });
 
 When("I download the {string} QR", (qrFormat) => {
-    commonPage.downloadQR(qrFormat);
+    contentPage.downloadQR(qrFormat);
 });
 
 Then("the QR code is downloaded in the {string} format", (qrFormat) => {
