@@ -4,7 +4,9 @@
   "description": "Exercise for bitly EU",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "smokeTest": "cypress run --e2e --config viewportWidth=1920,viewportHeight=1080",
+    "mobileSmokeTest":"cypress run --config viewportWidth=412,viewportHeight=915 --spec \"cypress/e2e/features/smoke.feature\",\"cypress/e2e/features/qrGeneration.feature\"",
+    "cypressUI":"cypress open"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,23 @@
   "bugs": {
     "url": "https://github.com/JuanMunoz93/bitlyExercise/issues"
   },
-  "homepage": "https://github.com/JuanMunoz93/bitlyExercise#readme"
+  "homepage": "https://github.com/JuanMunoz93/bitlyExercise#readme",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": [
+      "cypress/e2e/stepDefinitions/*.js"
+    ],
+    "html": {
+      "enabled": true
+    }
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "15.1.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
+    "@cypress/xpath": "2.0.3",
+    "@faker-js/faker": "^7.6.0",
+    "cypress": "12.7.0",
+    "jimp": "0.22.7",
+    "qrcode-reader": "1.0.4"
+  }
 }
