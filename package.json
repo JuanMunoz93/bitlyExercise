@@ -4,7 +4,9 @@
   "description": "Exercise for bitly EU",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "smokeTest": "cypress run --spec \"cypress/e2e/features/smoke.feature\" --config viewportWidth=1920,viewportHeight=1080",
+    "regression": "cypress run --e2e --config viewportWidth=1920,viewportHeight=1080",
+    "mobileRegression":"cypress run --e2e --browser chrome --config viewportWidth=412,viewportHeight=915"
   },
   "repository": {
     "type": "git",

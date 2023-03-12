@@ -5,11 +5,14 @@ const Jimp = require("jimp");
 
 module.exports = defineConfig({
   e2e: {
-    viewportWidth: 1920,
-    viewportHeight: 1080,
+    //viewportWidth: 1920,
+    //viewportHeight: 1080,
     baseUrl: 'https://www.qrcode-monkey.com/',
     specPattern: "**/*.feature",
-
+    defaultCommandTimeout: 10000,
+    execTimeout: 180000,
+    taskTimeout: 60000,
+    
     env:{
       refreshPageTime:15000,
       readFileTimeout:20000,
@@ -18,11 +21,10 @@ module.exports = defineConfig({
       contentTabs:["url","text","email","phone","sms","vcard","mecard","maps","facebook","twitter","youtube","wifi","event","bitcoin"]
     },
 
-    // prefix async
+
     async setupNodeEvents(on, config) {
       const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild').createEsbuildPlugin
       const createBundler = require('@bahmutov/cypress-esbuild-preprocessor')
-
 
       await require('@badeball/cypress-cucumber-preprocessor').addCucumberPreprocessorPlugin(on, config)
 
@@ -31,9 +33,9 @@ module.exports = defineConfig({
       }));
 
       on('task', {
+
         deleteFolder(folderName) {
           console.log('deleting folder %s', folderName);
-    
           return new Promise((resolve, reject) => {
             rmdir(folderName, { maxRetries: 10, recursive: true }, (err) => {
               if (err) {
@@ -68,7 +70,7 @@ module.exports = defineConfig({
         },
 
       })
-      // return any mods to Cypress
+
       return config
     }
   },
