@@ -1,5 +1,7 @@
 const { defineConfig } = require("cypress");
-const { rmdir, readdirSync } = require('fs')
+const { rmdir, readdirSync, readFileSync } = require('fs')
+const qrCodeReader = require('qrcode-reader');
+const Jimp = require("jimp");
 
 module.exports = defineConfig({
   e2e: {
@@ -42,6 +44,28 @@ module.exports = defineConfig({
           })
         },
 
+        readQR(qrPath) {
+          return new Promise((resolve, reject) => {
+            const buffer = readFileSync(qrPath);
+            Jimp.read(buffer, function(err, image) {
+              if (err) {
+                  console.error(err);
+              }
+
+              const qrCodeInstance = new qrCodeReader();
+              qrCodeInstance.callback = function(err, value) {
+                  if (err) {
+                      reject(err);
+                  }
+                  console.log(value.result);
+                  resolve(value.result);
+              };
+
+              qrCodeInstance.decode(image.bitmap);
+            });
+
+          })
+        },
 
       })
       // return any mods to Cypress

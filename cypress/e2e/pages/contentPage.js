@@ -11,6 +11,7 @@ export class ContentPage{
         settingAccordionBtn: (setting) => cy.xpath(`//div[@ng-click="setEditView('${setting}')"]/parent::div[contains(@class, "pane")]`),
         activeContentTab: () => cy.get("div.type-bar-inner a.tab.active"),
         cookiesDialog: () => cy.get("#onetrust-consent-sdk div[role='alertdialog']"),
+        qrTextInput: () => cy.get("#qrcodeText"),
     }
 
     generateQR(){
@@ -57,7 +58,6 @@ export class ContentPage{
       )
     }
 
-
     /**
      * Get the setting accordion panes
      * @param {string[]} expectedContentTabs The valid values in the array are: "content","colors","logo","shape". If empty, return all setting panes.
@@ -71,7 +71,7 @@ export class ContentPage{
 
     /**
      * Get the active content tab
-         * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
+     * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
      */
     getActiveContentTab(){
       return this.webElements.activeContentTab();
@@ -79,10 +79,19 @@ export class ContentPage{
 
     /**
      * Get the cookies dialog
-         * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
+     * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
      */
     getCookiesDialog(){
       return this.webElements.cookiesDialog();
     }
 
+    
+    /**
+     * Select text content for the QR and type the received string
+     * @param {string} qrText Value to be used for the QR content
+     */
+    configureQRText(qrText){
+      this.webElements.contentTab("text").click();
+      this.webElements.qrTextInput().type(qrText);
+    }
 }

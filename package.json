@@ -29,6 +29,9 @@
     "@badeball/cypress-cucumber-preprocessor": "15.1.4",
     "@bahmutov/cypress-esbuild-preprocessor": "2.2.0",
     "@cypress/xpath": "2.0.3",
-    "cypress": "12.7.0"
+    "@faker-js/faker": "^7.6.0",
+    "cypress": "12.7.0",
+    "jimp": "^0.22.7",
+    "qrcode-reader": "^1.0.4"
   }
 }
