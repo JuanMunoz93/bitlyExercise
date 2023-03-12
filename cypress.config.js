@@ -10,7 +10,10 @@ module.exports = defineConfig({
 
     env:{
       refreshPageTime:15000,
-      readFileTimeout:20000
+      readFileTimeout:20000,
+      validQRFormats:["png","svg","pdf","eps"],
+      settingAccordions:["content","colors","logo","shape"],
+      contentTabs:["url","text","email","phone","sms","vcard","mecard","maps","facebook","twitter","youtube","wifi","event","bitcoin"]
     },
 
     // prefix async

@@ -12,5 +12,5 @@ Feature: smoke tests
 
     Scenario: Verify the main interactions
         Then I can expand all setting accordions
-        And I can navigate throught all content types
+        And I can navigate through all content types
 

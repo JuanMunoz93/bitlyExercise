@@ -1,7 +1,7 @@
 require('@cypress/xpath');
-const validQRFormats=["png","svg","pdf","eps"];
-const settingAccordions=["content","colors","logo","shape"];
-const contentTabs=["url","text","email","phone","sms","vcard","mecard","maps","facebook","twitter","youtube","wifi","event","bitcoin"];
+const validQRFormats=Cypress.env('validQRFormats');
+const settingAccordions=Cypress.env('settingAccordions');
+const contentTabs=Cypress.env('contentTabs');
 
 export class ContentPage{
     webElements = {
@@ -57,12 +57,24 @@ export class ContentPage{
       )
     }
 
+
+    /**
+     * Get the setting accordion panes
+     * @param {string[]} expectedContentTabs The valid values in the array are: "content","colors","logo","shape". If empty, return all setting panes.
+     * @returns {[Cypress.Chainable<JQuery<HTMLElement>>]}
+     */
+    getContentTabs(expectedContentTabs = contentTabs){
+      return expectedContentTabs.map(contentTab =>
+        this.webElements.contentTab(contentTab)
+      )
+    }
+
     /**
      * Get the active content tab
          * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
      */
     getActiveContentTab(){
-      return this.webElements.activeContentTab()
+      return this.webElements.activeContentTab();
     }
 
     /**
@@ -70,7 +82,7 @@ export class ContentPage{
          * @returns {Cypress.Chainable<JQuery<HTMLElement>>}
      */
     getCookiesDialog(){
-      return this.webElements.cookiesDialog()
+      return this.webElements.cookiesDialog();
     }
 
 }

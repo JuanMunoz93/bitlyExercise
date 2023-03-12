@@ -17,7 +17,7 @@ Then("the cookies dialog is visible", () => {
 
 Then("the settings section for content is expanded", () => {
     contentPage.getSettingAccordions(["content"])
-    .forEach( btn => btn.should('have.class', 'active'))
+        .forEach( btn => btn.should('have.class', 'active'))
 });
 
 Then("the default QR content is url", () => {
@@ -26,5 +26,20 @@ Then("the default QR content is url", () => {
 
 Then("the additional setting sections are collapsed", () => {
     contentPage.getSettingAccordions(["colors","logo","shape"])
-    .forEach( btn => btn.should('not.have.class', 'active'))
+        .forEach( btn => btn.should('not.have.class', 'active'))
+});
+
+Then("I can expand all setting accordions", () => {
+    contentPage.getSettingAccordions(["colors","logo","shape"])
+        .forEach( btn => {
+            btn.click().should('have.class', 'active')
+
+        })
+});
+
+Then("I can navigate through all content types", () => {
+    contentPage.getContentTabs()
+        .forEach( btn => {
+            btn.click().should('have.class', 'active')
+        })
 });
