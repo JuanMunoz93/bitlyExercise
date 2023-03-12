@@ -4,7 +4,7 @@ import {ContentPage} from "../pages/contentPage"
 const contentPage = new ContentPage();
 
 When("the home page loads", () => {
-
+    cy.task('log', "Step: home page loads");
 });
 
 Then("the download buttons are disabled", () => {

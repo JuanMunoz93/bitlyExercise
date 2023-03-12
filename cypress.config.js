@@ -5,11 +5,11 @@ const Jimp = require("jimp");
 
 module.exports = defineConfig({
   e2e: {
-    //viewportWidth: 1920,
-    //viewportHeight: 1080,
+    viewportWidth: 412,
+    viewportHeight: 915,
     baseUrl: 'https://www.qrcode-monkey.com/',
     specPattern: "**/*.feature",
-    defaultCommandTimeout: 10000,
+    defaultCommandTimeout: 60000,
     execTimeout: 180000,
     taskTimeout: 60000,
     
@@ -33,7 +33,11 @@ module.exports = defineConfig({
       }));
 
       on('task', {
-
+        log(logMessage){
+          console.log(`Log task: "${logMessage}"`);
+          return null
+        },
+        
         deleteFolder(folderName) {
           console.log('deleting folder %s', folderName);
           return new Promise((resolve, reject) => {

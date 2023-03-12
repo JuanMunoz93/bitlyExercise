@@ -1,4 +1,4 @@
-Feature: smoke tests
+Feature: basic interactions and initial state for smoke tests
     Background: 
     Given I am in the qrcode monkey homepage
     When the home page loads
@@ -10,7 +10,7 @@ Feature: smoke tests
         And the default QR content is url
         And the additional setting sections are collapsed
 
-    Scenario: Verify the main interactions
+    Scenario: Verify the main navigations on the app
         Then I can expand all setting accordions
         And I can navigate through all content types
 
